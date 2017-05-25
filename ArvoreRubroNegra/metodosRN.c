@@ -18,7 +18,7 @@ struct No {
 };
 
 ArvoreRN*criaArvore() {
-    ArvoreRN*ponteiroRaiz = (ArvoreRN*) malloc(sizeof (ArvoreRB));
+    ArvoreRN*ponteiroRaiz = (ArvoreRN*) malloc(sizeof (ArvoreRN));
     if (ponteiroRaiz != NULL) {
         *ponteiroRaiz = NULL;
 
