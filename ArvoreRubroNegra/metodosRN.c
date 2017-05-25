@@ -26,6 +26,34 @@ ArvoreRN*criaArvore() {
     return ponteiroRaiz;
 }
 
-int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado){
-    
+struct No*insereNodo(struct No*altura, int dado, int *aux1) {
+    if (altura == NULL) { //acho que está ok
+        struct No*primeiroNo;
+        primeiroNo = (struct No*) malloc(sizeof (struct No));
+        if (primeiroNo == NULL) {
+            *aux1 = 0;
+            return NULL;
+
+        }
+        primeiroNo->direita = NULL;
+        primeiroNo->esquerda = NULL;
+        primeiroNo->corNo = vermelha;
+        primeiroNo->aux = dado;
+        *aux1 = 1;
+        return primeiroNo;
+    }
+
+
+};
+
+int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado) {
+    int aux1;
+    *ponteiroRaiz = insereNodo(*ponteiroRaiz, dado, &aux1);
+
+
+    if ((*ponteiroRaiz) != NULL) {
+        (*ponteiroRaiz)->corNo = preta;
+    }
+    return aux1;
+
 }

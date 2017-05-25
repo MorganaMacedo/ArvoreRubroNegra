@@ -24,7 +24,17 @@ int main(int argc, char** argv) {
         printf("*****************************1º Teste\n");
         printf ("Árvore criada com sucesso\n");
     }else{
-        printf("Problema na criação da Árvore");
+        printf("Problema na criação da Árvore\n");
+    }
+    
+    
+    inserirNaArvore(ponteiroRaiz, 10);
+    
+    if (ponteiroRaiz > 0){
+        printf("*****************************2º Teste\n");
+        printf ("Dado inserido com sucesso\n");
+    }else{
+        printf("Problema na inserção da Árvore\n");
     }
     
     
