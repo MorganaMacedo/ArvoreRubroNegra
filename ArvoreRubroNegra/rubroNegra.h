@@ -11,9 +11,11 @@
  * Created on 20 de Maio de 2017, 1:19
  */
 
-typedef struct No* ArvoreRB;
+typedef struct No* ArvoreRN;
 
-ArvoreRB*criaArvore();
+ArvoreRN*criaArvore();
+
+int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado);
 
 
 

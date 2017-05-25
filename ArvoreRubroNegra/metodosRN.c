@@ -17,11 +17,15 @@ struct No {
     int corNo;
 };
 
-ArvoreRB*criaArvore() {
-    ArvoreRB*ponteiroRaiz = (ArvoreRB*) malloc(sizeof (ArvoreRB));
+ArvoreRN*criaArvore() {
+    ArvoreRN*ponteiroRaiz = (ArvoreRN*) malloc(sizeof (ArvoreRB));
     if (ponteiroRaiz != NULL) {
         *ponteiroRaiz = NULL;
 
     }
     return ponteiroRaiz;
+}
+
+int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado){
+    
 }

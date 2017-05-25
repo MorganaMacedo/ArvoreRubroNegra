@@ -19,7 +19,7 @@
  */
 int main(int argc, char** argv) {
 
-    ArvoreRB * ponteiroRaiz = criaArvore();
+    ArvoreRN * ponteiroRaiz = criaArvore();
     if (ponteiroRaiz!= NULL){
         printf("*****************************1º Teste\n");
         printf ("Árvore criada com sucesso\n");
