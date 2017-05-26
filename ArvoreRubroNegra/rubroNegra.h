@@ -17,5 +17,5 @@ ArvoreRN*criaArvore();
 
 int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado);
 
-
+void imprimeEmOrdem(ArvoreRN*ponteiroRaiz, int altura);
 
