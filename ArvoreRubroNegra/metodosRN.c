@@ -123,7 +123,7 @@ int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado) {
 
 void imprimeEmOrdem(ArvoreRN*ponteiroRaiz, int altura) {
     if (ponteiroRaiz == NULL) {
-        return;
+        return 0;
     }
     if ((*ponteiroRaiz) != NULL) {
         imprimeEmOrdem(&((*ponteiroRaiz)->esquerda), altura + 1);
@@ -137,9 +137,74 @@ void imprimeEmOrdem(ArvoreRN*ponteiroRaiz, int altura) {
         imprimeEmOrdem(&((*ponteiroRaiz)->direita), altura + 1);
 
     }
+}
+
+void imprimeEmPosOrdem(ArvoreRN*ponteiroRaiz, int altura) {
+    if (ponteiroRaiz == NULL) {
+        return 0;
+    }
+    if ((*ponteiroRaiz) != NULL) {
+        imprimeEmPosOrdem(&((*ponteiroRaiz)->esquerda), altura + 1);
+        imprimeEmPosOrdem(&((*ponteiroRaiz)->direita), altura + 1);
+
+        if ((*ponteiroRaiz)->corNo == vermelha) {
+            printf("%d É Vermelha: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+
+        } else {
+            printf("%d É Preta: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+
+        }
+    }
 
 
 }
 
+void imprimeEmPreOrdem(ArvoreRN*ponteiroRaiz, int altura) {
+    if (ponteiroRaiz == NULL) {
+        return 0;
+    }
+    if ((*ponteiroRaiz) != NULL) {
+
+        if ((*ponteiroRaiz)->corNo == vermelha) {
+            printf("%d É Vermelha: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+
+        } else {
+            printf("%d É Preta: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+
+        }
+        imprimeEmPreOrdem(&((*ponteiroRaiz)->esquerda), altura + 1);
+        imprimeEmPreOrdem(&((*ponteiroRaiz)->direita), altura + 1);
+
+    }
 
 
+}
+
+int alturadaArvore(ArvoreRN*ponteiroRaiz) {
+    int aDireita, aEsquerda;
+
+    if (ponteiroRaiz == NULL) {
+        return 0;
+    }
+    if (*ponteiroRaiz == NULL) {
+        return 0;
+    }
+    aDireita = alturadaArvore(&((*ponteiroRaiz)->direita));
+    aEsquerda = alturadaArvore(&((*ponteiroRaiz)->esquerda));
+    if (aDireita < aEsquerda) {
+        return (aEsquerda + 1);
+    } else {
+        return (aDireita + 1);
+
+    }
+}
+
+int ArvoreVazia(ArvoreRN *ponteiroRaiz) {
+    if (ponteiroRaiz == NULL) {
+        return 0;
+    }
+    if ((*ponteiroRaiz) == NULL) {
+        return 0;
+    }
+    return 1;
+}

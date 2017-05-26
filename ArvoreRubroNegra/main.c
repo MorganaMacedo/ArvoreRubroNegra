@@ -20,6 +20,8 @@
  */
 int main(int argc, char** argv) {
 
+
+
     ArvoreRN * ponteiroRaiz = criaArvore();
     if (ponteiroRaiz != NULL) {
         printf("*****************************1º Teste\n");
@@ -51,8 +53,25 @@ int main(int argc, char** argv) {
 
     imprimeEmOrdem(ponteiroRaiz, 0);
 
+    printf("*****************************4º Teste pre ordem\n");
+
+    imprimeEmPreOrdem(ponteiroRaiz, 0);
 
 
+    printf("*****************************5º Teste pos ordem\n");
+    imprimeEmPosOrdem(ponteiroRaiz, 0);
+
+    printf("*****************************6º Teste altura\n");
+
+    printf("Altura da Árvore: %d \n", alturadaArvore(ponteiroRaiz));
+
+    printf("*****************************7º Vazia\n");
+    
+    if (ArvoreVazia(ponteiroRaiz)== 1){
+        printf ("A árvore não está vazia\n");
+    }else{
+        printf ("A árvore está vazia, POBLEMA NA CRIAÇÃO DA ÁRVORE!\n");
+    }
+    
     return (EXIT_SUCCESS);
 }
-

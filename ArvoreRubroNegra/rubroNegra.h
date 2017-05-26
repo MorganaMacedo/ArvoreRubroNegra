@@ -19,3 +19,11 @@ int inserirNaArvore(ArvoreRN*ponteiroRaiz, int dado);
 
 void imprimeEmOrdem(ArvoreRN*ponteiroRaiz, int altura);
 
+void imprimeEmPosOrdem(ArvoreRN*ponteiroRaiz, int altura);
+
+
+void imprimeEmPreOrdem(ArvoreRN*ponteiroRaiz, int altura);
+
+int alturadaArvore(ArvoreRN*ponteiroRaiz);
+
+int ArvoreVazia(ArvoreRN *ponteiroRaiz);
