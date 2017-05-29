@@ -208,3 +208,57 @@ int ArvoreVazia(ArvoreRN *ponteiroRaiz) {
     }
     return 1;
 }
+
+int quantidadeNos(ArvoreRN*ponteiroRaiz) {
+    int nosEsq, nosDir;
+    if (ponteiroRaiz == NULL) {
+        return 0;
+    }
+    if (*ponteiroRaiz == NULL) {
+        return 0;
+    }
+    nosEsq = quantidadeNos(&((*ponteiroRaiz)->esquerda));
+    nosDir = quantidadeNos(&((*ponteiroRaiz)->direita));
+
+    return (nosEsq + nosDir + 1);
+}
+
+void liberaNos(struct No*nos) {
+    if (nos == NULL) {
+        return 0;
+
+    }
+    liberaNos(nos->esquerda);
+    liberaNos(nos->direita);
+    free(nos);
+    nos = NULL;
+
+}
+
+void LiberaNosDaArvore(ArvoreRN*ponteiroRaiz) {
+    if (ponteiroRaiz == NULL) {
+        return 0;
+
+    }
+    liberaNos(*ponteiroRaiz);
+    free(ponteiroRaiz);
+}
+
+int consultarDaArvore(ArvoreRN*ponteiroRaiz, int numero) {
+    struct No* atual = *ponteiroRaiz;
+    if (ponteiroRaiz == NULL) {
+        return 0;
+    }
+    while (atual != NULL) {
+        if (numero == atual->aux) {
+            return 1;
+        }
+        if (numero > atual->aux) {
+            atual = atual->direita;
+        } else {
+            atual = atual->esquerda;
+        }
+
+    }
+    return 0;
+}

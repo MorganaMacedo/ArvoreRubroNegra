@@ -20,8 +20,6 @@
  */
 int main(int argc, char** argv) {
 
-
-
     ArvoreRN * ponteiroRaiz = criaArvore();
     if (ponteiroRaiz != NULL) {
         printf("*****************************1º Teste\n");
@@ -66,12 +64,30 @@ int main(int argc, char** argv) {
     printf("Altura da Árvore: %d \n", alturadaArvore(ponteiroRaiz));
 
     printf("*****************************7º Vazia\n");
-    
-    if (ArvoreVazia(ponteiroRaiz)== 1){
-        printf ("A árvore não está vazia\n");
-    }else{
-        printf ("A árvore está vazia, POBLEMA NA CRIAÇÃO DA ÁRVORE!\n");
+
+    if (ArvoreVazia(ponteiroRaiz) == 1) {
+        printf("A árvore não está vazia\n");
+    } else {
+        printf("A árvore está vazia, POBLEMA NA CRIAÇÃO DA ÁRVORE!\n");
     }
-    
+
+    printf("*****************************8º Atura\n");
+
+    if (quantidadeNos(ponteiroRaiz) == 0) {
+        printf("A árvore está vazia\n");
+    } else {
+        printf("Nós= %d \n", quantidadeNos(ponteiroRaiz));
+    }
+
+    printf("*****************************9º Consultar\n");
+
+    if (consultarDaArvore(ponteiroRaiz, 30) == 1) {
+        printf("O valor existe na árvore\n");
+    } else {
+        printf("Este valor não existe na árvore");
+    }
     return (EXIT_SUCCESS);
 }
+
+
+

@@ -21,9 +21,14 @@ void imprimeEmOrdem(ArvoreRN*ponteiroRaiz, int altura);
 
 void imprimeEmPosOrdem(ArvoreRN*ponteiroRaiz, int altura);
 
-
 void imprimeEmPreOrdem(ArvoreRN*ponteiroRaiz, int altura);
 
 int alturadaArvore(ArvoreRN*ponteiroRaiz);
 
 int ArvoreVazia(ArvoreRN *ponteiroRaiz);
+
+int quantidadeNos(ArvoreRN*ponteiroRaiz);
+
+void LiberaNosDaArvore(ArvoreRN*ponteiroRaiz);
+
+int consultarDaArvore(ArvoreRN*ponteiroRaiz, int numero);
