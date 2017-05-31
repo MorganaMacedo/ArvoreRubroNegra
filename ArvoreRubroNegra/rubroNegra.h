@@ -32,3 +32,5 @@ int quantidadeNos(ArvoreRN*ponteiroRaiz);
 void LiberaNosDaArvore(ArvoreRN*ponteiroRaiz);
 
 int consultarDaArvore(ArvoreRN*ponteiroRaiz, int numero);
+
+int removeArvore(ArvoreRN*ponteiroRaiz, int dado);

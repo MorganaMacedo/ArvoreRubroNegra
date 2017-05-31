@@ -128,10 +128,10 @@ void imprimeEmOrdem(ArvoreRN*ponteiroRaiz, int altura) {
     if ((*ponteiroRaiz) != NULL) {
         imprimeEmOrdem(&((*ponteiroRaiz)->esquerda), altura + 1);
         if ((*ponteiroRaiz)->corNo == vermelha) {
-            printf("%d É Vermelha: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+            printf("\t%d\tÉ Vermelha:\t\t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
 
         } else {
-            printf("%d É Preta: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+            printf("\t%d\tÉ Preta: \t\t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
 
         }
         imprimeEmOrdem(&((*ponteiroRaiz)->direita), altura + 1);
@@ -148,10 +148,10 @@ void imprimeEmPosOrdem(ArvoreRN*ponteiroRaiz, int altura) {
         imprimeEmPosOrdem(&((*ponteiroRaiz)->direita), altura + 1);
 
         if ((*ponteiroRaiz)->corNo == vermelha) {
-            printf("%d É Vermelha: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+            printf("\t%d\tÉ Vermelha:\t\t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
 
         } else {
-            printf("%d É Preta: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+            printf("\t%d\tÉ Preta: \t\t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
 
         }
     }
@@ -166,10 +166,10 @@ void imprimeEmPreOrdem(ArvoreRN*ponteiroRaiz, int altura) {
     if ((*ponteiroRaiz) != NULL) {
 
         if ((*ponteiroRaiz)->corNo == vermelha) {
-            printf("%d É Vermelha: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+            printf("\t%d\tÉ Vermelha:\t\t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
 
         } else {
-            printf("%d É Preta: \t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
+            printf("\t%d\tÉ Preta: \t\t Altura(%d) \n ", (*ponteiroRaiz)->aux, altura);
 
         }
         imprimeEmPreOrdem(&((*ponteiroRaiz)->esquerda), altura + 1);
@@ -261,4 +261,108 @@ int consultarDaArvore(ArvoreRN*ponteiroRaiz, int numero) {
 
     }
     return 0;
+}
+
+struct No* balanceada(struct No* altura) {// <= direita
+    if (metodoCor(altura->direita) == vermelha) {
+        altura = giraParaEsquerda(altura);
+    }
+    if (metodoCor(altura->esquerda) == vermelha && metodoCor(altura->direita) == vermelha) {
+        mudaCor(altura);
+    }
+    if (altura->esquerda != NULL && metodoCor(altura->direita) == vermelha) {
+        altura = giraParaDireita(altura);
+    }
+    return altura;
+
+}
+
+struct No*VermMove2Esq(struct No*altura) {
+    mudaCor(altura);
+    if (metodoCor(altura->direita->esquerda) == vermelha) {
+        altura->direita = giraParaDireita(altura);
+        altura = giraParaEsquerda(altura);
+        mudaCor(altura);
+
+
+
+    }
+    return altura;
+
+}
+
+struct No*VermMove2Dir(struct No*altura) {
+    mudaCor(altura);
+    if (metodoCor(altura->esquerda->esquerda) == vermelha) {
+        altura = giraParaDireita(altura);
+        mudaCor(altura);
+
+    }
+    return altura;
+
+}
+
+struct No* liberaMenorNodo(struct No* altura) {
+    if (altura->esquerda == NULL) {
+        free(altura);
+        return NULL;
+    }
+    if (metodoCor(altura->esquerda) == preta && metodoCor(altura->esquerda->esquerda) == preta) {
+        altura = VermMove2Esq(altura);
+    }
+    altura->esquerda = liberaMenorNodo(altura->esquerda);
+    return balanceada(altura);
+}
+
+struct No* buscaMenorNodo(struct No* atual) {
+    struct No* a = atual;
+    struct No* e = atual->esquerda;
+    while (e != NULL) {
+        a = e;
+        e = e->esquerda;
+    }
+    return a;
+}
+
+struct No* removeNo(struct No* altura, int dado) {
+    if (dado < altura->aux) {
+        if (metodoCor(altura->esquerda) == preta && metodoCor(altura->esquerda->esquerda) == preta) {
+            altura = VermMove2Esq(altura);
+
+        }
+        altura->esquerda = removeNo(altura->esquerda, dado);
+    } else {
+        if (metodoCor(altura->esquerda) == vermelha) {
+            altura = giraParaDireita(altura);
+        }
+        if (dado == altura->aux && (altura->direita == NULL)) {
+            free(altura);
+            return NULL;
+
+        }
+        if (metodoCor(altura->direita) == preta && metodoCor(altura->direita->esquerda) == preta) {
+            altura = VermMove2Dir(altura);
+        }
+        if (dado == altura->aux) {
+            struct No* m = buscaMenorNodo(altura->direita);
+            altura->aux = m->aux;
+            altura->direita = liberaMenorNodo(altura->direita);
+        } else {
+            altura->direita = removeNo(altura->direita, dado);
+        }
+    }
+    return balanceada(altura);
+}
+
+int removeArvore(ArvoreRN*ponteiroRaiz, int dado) {
+    if (consultarDaArvore(ponteiroRaiz, dado)) {
+        struct No* raiz = *ponteiroRaiz;
+        *ponteiroRaiz = removeNo(raiz, dado);
+        if (*ponteiroRaiz != NULL) {
+            (*ponteiroRaiz)->corNo = preta;
+        }
+        return 1;
+    }else{
+        return 0;
+    }
 }

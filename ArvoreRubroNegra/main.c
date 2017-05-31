@@ -86,6 +86,10 @@ int main(int argc, char** argv) {
     } else {
         printf("Este valor não existe na árvore");
     }
+    printf("*****************************10 Remover\n");
+    removeArvore(ponteiroRaiz, 10);
+    imprimeEmPosOrdem(ponteiroRaiz, 0);
+
     return (EXIT_SUCCESS);
 }
 
