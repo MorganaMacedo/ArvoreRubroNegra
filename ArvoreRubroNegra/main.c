@@ -82,6 +82,7 @@ int main(int argc, char** argv) {
     printf("*****************************9º Consultar\n");
 
     if (consultarDaArvore(ponteiroRaiz, 30) == 1) {
+        
         printf("O valor existe na árvore\n");
         
     } else {
