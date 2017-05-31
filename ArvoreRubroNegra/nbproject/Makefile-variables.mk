@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
 CND_PACKAGE_NAME_Debug=arvorerubronegra.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/arvorerubronegra.tar
 # Release configuration
-CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
+CND_PLATFORM_Release=Cygwin-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
 CND_ARTIFACT_NAME_Release=arvorerubronegra
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/arvorerubronegra
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/arvorerubronegra
+CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
 CND_PACKAGE_NAME_Release=arvorerubronegra.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/arvorerubronegra.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/arvorerubronegra.tar
 #
 # include compiler specific variables
 #
